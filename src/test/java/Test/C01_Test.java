@@ -8,5 +8,7 @@ public class C01_Test {
     @Test
     public void testName() {
         System.out.println("Test");
+        System.out.println("Test2");
+        System.out.println("Test2");
     }
 }
