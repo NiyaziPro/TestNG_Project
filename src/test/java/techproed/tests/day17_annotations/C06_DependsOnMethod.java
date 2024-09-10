@@ -12,42 +12,35 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class C05_DependsOnMethod {
-
+public class C06_DependsOnMethod {
     WebDriver driver;
 
     @BeforeClass
     public void setUp() {
-        driver = new ChromeDriver();
+        driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
-
     @Test
     public void test01() throws InterruptedException {
-
-        driver.get("https://www.amazon.com");
+        driver.get("https://amazon.com");
         Thread.sleep(3000);
+
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+        searchBox.sendKeys("selenium", Keys.ENTER);
 
-        searchBox.sendKeys("Macbook Pro", Keys.ENTER);
 
-
-        Assert.assertTrue(true);
+        Assert.assertTrue(true);    //Burada kasten fail aldik böylece bu teste bagli olan method calismayacak
 
     }
 
     @Test(dependsOnMethods = "test01")
     public void test02() {
+        //sonuc yazisinin testng icerdigini test edelim
 
-        //sonuc yazisini Macbook Pro icerdigini test edelim
-
-        String resultText = driver.findElement(By.xpath("(//div[@class='sg-col-inner'])[1]")).getText();
-
-        System.out.println("Result Text : " + resultText);
-
-        Assert.assertTrue(resultText.contains("Macbook Pro"));
-
+        String actualResultText=driver.findElement(By.xpath("(//div[@class='sg-col-inner'])[1]")).getText();
+        System.out.println("actualResultText = " + actualResultText);
+        Assert.assertTrue(actualResultText.contains("selenium"));
     }
 }
