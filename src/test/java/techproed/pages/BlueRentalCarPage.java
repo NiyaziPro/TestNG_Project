@@ -34,4 +34,10 @@ public class BlueRentalCarPage {
     @FindBy(xpath = "//*[.='Profile']")
     public WebElement profileLink;
 
+    @FindBy(xpath = "//*[.='Logout']")
+    public WebElement logoutLink;
+
+    @FindBy(xpath = "//*[.='OK']")
+    public WebElement oKButton;
+
 }

@@ -138,13 +138,13 @@ public class ReusableMethods {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    //JS Sayfa Sonu Scroll
+    //JS PAGE END Scroll
     public static void scrollEnd() {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
     }
 
-    //JS Sayfa Başı Scroll
+    //JS PAGE HOME Scroll
     public static void scrollHome() {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
