@@ -65,8 +65,8 @@ public class ReusableMethods {
 
     //SwitchToWindow1
     public static void switchToWindow(int number) {
-        List<String> tumWindowHandles = new ArrayList<String>(Driver.getDriver().getWindowHandles());
-        Driver.getDriver().switchTo().window(tumWindowHandles.get(number));
+        List<String> allWindowHandles = new ArrayList<String>(Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(allWindowHandles.get(number));
     }
 
     //SwitchToWindow2
@@ -118,8 +118,8 @@ public class ReusableMethods {
 
     //WebTable
     public static void printData(int row, int cell) {
-        WebElement satirSutun = Driver.getDriver().findElement(By.xpath("(//tbody)[1]//tr[" + row + "]//td[" + cell + "]"));
-        System.out.println(satirSutun.getText());
+        WebElement rowCell = Driver.getDriver().findElement(By.xpath("(//tbody)[1]//tr[" + row + "]//td[" + cell + "]"));
+        System.out.println(rowCell.getText());
     }
 
     //Click Method
