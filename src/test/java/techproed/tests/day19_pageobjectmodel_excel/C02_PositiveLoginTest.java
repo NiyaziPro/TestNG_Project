@@ -43,7 +43,7 @@ public class C02_PositiveLoginTest {
         blueRentalCarPage.emailBox.sendKeys(ConfigReader.getProperties("blueRentalEmail"));
         blueRentalCarPage.passwordBox.sendKeys(ConfigReader.getProperties("blueRentalPassword"), Keys.ENTER);
 
-        Assert.assertTrue(blueRentalCarPage.dropDownMenuVerify.isDisplayed());
+        Assert.assertTrue(blueRentalCarPage.dropDownMenu.isDisplayed());
 
         Driver.closeDriver();
 

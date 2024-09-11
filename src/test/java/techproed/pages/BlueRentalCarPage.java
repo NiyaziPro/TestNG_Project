@@ -23,8 +23,15 @@ public class BlueRentalCarPage {
     public WebElement passwordBox;
 
     @FindBy(id = "dropdown-basic-button")
-    public WebElement dropDownMenuVerify;
+    public WebElement dropDownMenu;
 
     @FindBy(xpath = "//*[contains(text(), 'not found')]")
     public WebElement negativeLoginVerify;
+
+    @FindBy(tagName = "em")
+    public WebElement emailVerify;
+
+    @FindBy(xpath = "//*[.='Profile']")
+    public WebElement profileLink;
+
 }
