@@ -19,11 +19,11 @@ public class GooglePage {
     public WebElement searchBox;
 
     @FindBy(id = "W0wltc")
-    public WebElement cookieHandle;
+    public WebElement cookiesHandle;
 
-    public void handleCookie() {
+    public void handleCookies() {
         try {
-            ReusableMethods.click(cookieHandle);
+            ReusableMethods.click(cookiesHandle);
         } catch (Exception e) {
             // cookie'nin çıkmaması durumunda, alacağımız exception'ı, burayı boş bırakarak ignore etmiş oluruz
         }

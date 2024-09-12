@@ -1,22 +1,19 @@
 package techproed.tests.day20_dataprovider;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import techproed.pages.AmazonPage;
 import techproed.pages.GooglePage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
-import techproed.utilities.ReusableMethods;
 
-import java.util.Objects;
 
 public class C02_DataProvider {
 
 
-    @DataProvider(name = "googleProduct")
+    @DataProvider(name = "amazonProducts")
     public static Object[][] products() {
         return new Object[][]{
                 {"Macbook"},
@@ -26,13 +23,13 @@ public class C02_DataProvider {
         };
     }
 
-    @Test(dataProvider = "googleProduct")
+    @Test(dataProvider = "googleProducts")
     public void testGoogleSearch(String data) {
         GooglePage googlePage = new GooglePage();
 
         //Google sayfasına gidelim
         Driver.getDriver().get(ConfigReader.getProperties("googleUrl"));
-        googlePage.handleCookie();
+        googlePage.handleCookies();
 
         //DataProvider ile istediğimiz ürünleri aratalım
         googlePage.searchBox.sendKeys(data, Keys.ENTER);
@@ -44,7 +41,7 @@ public class C02_DataProvider {
     }
 
 
-    @Test(dataProvider = "products")
+    @Test(dataProvider = "amazonProducts")
     public void testAmazonSearch(String data) {
 
         AmazonPage amazonPage = new AmazonPage();
@@ -58,5 +55,7 @@ public class C02_DataProvider {
         //sayfayı kapatalım
 
         Driver.closeDriver();
+
+
     }
 }
