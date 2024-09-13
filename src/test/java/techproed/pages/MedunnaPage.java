@@ -12,6 +12,7 @@ public class MedunnaPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    /////////////// --  Login Page -- /////////////////////
     @FindBy(id = "account-menu")
     public WebElement accountMenuDropDown;
 
@@ -24,6 +25,8 @@ public class MedunnaPage {
 
     @FindBy(id = "login-item")
     public WebElement loginButton;
+
+    /////////////// --  Register Page -- /////////////////////
 
     @FindBy(xpath = "//*[.='Register']")
     public WebElement registerButton;
@@ -57,7 +60,18 @@ public class MedunnaPage {
     @FindBy(xpath = "//*[.='Registration Saved']")
     public WebElement registrationSavedText;
 
+    ////////////////// -- Password Strength -- //////////////////////
 
+    @FindBy (xpath = "//li[@style='background-color: rgb(255, 0, 0);']")
+    public WebElement passwordStrengthRed;
 
+    @FindBy (xpath = "//li[@style='background-color: rgb(255, 153, 0);']")
+    public WebElement passwordStrengthOrange;
+
+    @FindBy (xpath = "//li[@style='background-color: rgb(153, 255, 0);']")
+    public WebElement passwordStrengthGreen1;
+
+    @FindBy (xpath = "//li[@style='background-color: rgb(0, 255, 0);']")
+    public WebElement passwordStrengthGreen2;
 
 }
