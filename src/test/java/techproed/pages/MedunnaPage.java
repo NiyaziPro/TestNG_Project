@@ -15,6 +15,13 @@ public class MedunnaPage {
     @FindBy(id = "account-menu")
     public WebElement accountMenuDropDown;
 
+
+    @FindBy(id = "password")
+    public WebElement passwordBox;
+
+    @FindBy(xpath = "//span[.='Admin Batch210']")
+    public WebElement loginVerify;
+
     @FindBy(id = "login-item")
     public WebElement loginButton;
 
@@ -49,6 +56,8 @@ public class MedunnaPage {
 
     @FindBy(xpath = "//*[.='Registration Saved']")
     public WebElement registrationSavedText;
+
+
 
 
 }
