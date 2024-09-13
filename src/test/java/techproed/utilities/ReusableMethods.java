@@ -64,9 +64,9 @@ public class ReusableMethods {
     }
 
     //SwitchToWindow1
-    public static void switchToWindow(int number) {
+    public static void switchToWindow(int index) {
         List<String> allWindowHandles = new ArrayList<String>(Driver.getDriver().getWindowHandles());
-        Driver.getDriver().switchTo().window(allWindowHandles.get(number));
+        Driver.getDriver().switchTo().window(allWindowHandles.get(index));
     }
 
     //SwitchToWindow2
