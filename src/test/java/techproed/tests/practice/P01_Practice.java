@@ -9,9 +9,7 @@ import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ReusableMethods;
 
-import java.security.Key;
-
-public class P01 {
+public class P01_Practice {
 
     //Go to https://demo.automationtesting.in/Register.html
     //fill firstname, secondname, address fields with faker
