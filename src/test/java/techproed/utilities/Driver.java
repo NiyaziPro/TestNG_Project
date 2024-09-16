@@ -9,42 +9,51 @@ import org.openqa.selenium.safari.SafariDriver;
 import java.time.Duration;
 
 public class Driver {
-
-    private Driver() { // singlelton pattern (tekil kullanim)
-    }
-
-    static WebDriver driver;
+    /*
+    Webdriver tipinde bir thread local objecti olusturduk bu sayede PARALEL TEST yaparken
+    her threadin kendi driver ina sahip olmasini sagladik, böylece paralel olarak calisan threadler
+    birbirinin calismasini etkilemeyecek
+     */
+    // ThreadLocal ile her thread için ayrı bir WebDriver objesi oluşturuyoruz.
+    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
-        if (driver == null) {
+        if (driverPool.get() == null) {
+            // WebDriver i thread bazında oluşturuyoruz.
             switch (ConfigReader.getProperties("browser")) {
-
                 case "chrome":
-                    driver = new ChromeDriver();
+                    driverPool.set(new ChromeDriver());
                     break;
                 case "edge":
-                    driver = new EdgeDriver();
-                    break;
-                case "firefox":
-                    driver = new FirefoxDriver();
+                    driverPool.set(new EdgeDriver());
                     break;
                 case "safari":
-                    driver = new SafariDriver();
+                    driverPool.set(new SafariDriver());
+                    break;
+                case "firefox":
+                    driverPool.set(new FirefoxDriver());
                     break;
                 default:
-                    driver = new ChromeDriver();
+                    driverPool.set(new ChromeDriver());
             }
 
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+            // Oluşturulan WebDriveri yapılandırıyoruz.
+            driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         }
-        return driver;
+        // Thread'a özgü WebDriver objecti return ediyoruz.
+        return driverPool.get();
+    }
+
+    private Driver() {
+        // Singleton pattern
     }
 
     public static void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        // Açık olan WebDriver örneğini kapatıyoruz.
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove(); // ThreadLocal'daki referansı temizliyoruz.
         }
     }
 }

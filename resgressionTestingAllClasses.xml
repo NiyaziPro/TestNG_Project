@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="All test classes running">
+        <classes>
+            <class name="techproed.tests.day17_annotations.C01_Annotations">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                    <include name="test03"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day17_annotations.C02_BeforeGroup_AfterGroup">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                    <include name="test03"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day17_annotations.C03_Priority">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                    <include name="test03"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day17_annotations.C04_Ignore">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                    <include name="test03"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day17_annotations.C05_DependsOnMethod">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day17_annotations.C06_DependsOnMethod">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day18_pageobjectmodel.C01_SoftAssertion">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day18_pageobjectmodel.C02_SoftAssertionTest">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day18_pageobjectmodel.C03_FirstDriverUsage">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day18_pageobjectmodel.C04_PageClassUsage">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day18_pageobjectmodel.C05_PageClassTest">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day18_pageobjectmodel.C06_PropertiesUsage">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day19_pageobjectmodel_excel.C01_PropertiesTest">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day19_pageobjectmodel_excel.C02_PositiveLoginTest">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day19_pageobjectmodel_excel.C03_NegativeLoginTest">
+                <methods>
+                    <include name="testNegativeLogin"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day19_pageobjectmodel_excel.C04_ExcelReaderTest">
+                <methods>
+                    <include name="testExcelReader"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day19_pageobjectmodel_excel.C05_BlueRentalExcelTest">
+                <methods>
+                    <include name="testBlueRentalExcel"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day19_pageobjectmodel_excel.C06_BlueRentalExcelTest">
+                <methods>
+                    <include name="testBlueRentalExcel"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day19_pageobjectmodel_excel.C07_ClassWork">
+                <methods>
+                    <include name="testMedunnaRegister"/>
+                    <include name="testMedunnaRegister2"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day20_dataprovider.C01_DataProvider">
+                <methods>
+                    <include name="testData"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day20_dataprovider.C02_DataProvider">
+                <methods>
+                    <include name="testGoogleSearch"/>
+                    <include name="testAmazonSearch"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day20_dataprovider.C03_DataProviderTest">
+                <methods>
+                    <include name="testBlueRentalCarLogin"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day20_dataprovider.C04_HomeWork">
+                <methods>
+                    <include name="testAgeBoxVerifyPositive"/>
+                    <include name="testAgeBoxVerifyNegative"/>
+                    <include name="testAgeBoxVerifyInvalidData"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day21_xml_files_parallel_testing.C01_">
+                <methods>
+                    <include name="testName"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.practice.P01_Practice">
+                <methods>
+                    <include name="testDemoAutomationRegister"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.practice.medunna.LoginTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.practice.medunna.PasswordStrength">
+                <methods>
+                    <include name="testPasswordStrength"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.practice.medunna.RegisterTest">
+                <methods>
+                    <include name="testMedunnaRegister"/>
+                    <include name="testMedunnaRegister2"/>
+                    <include name="testMedunnaRegister3"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.smoke.C01_Annotations">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                    <include name="test03"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.smoke.C02_BeforeGroup_AfterGroup">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                    <include name="test03"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.smoke.C02_PositiveLoginTest">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
