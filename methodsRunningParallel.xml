@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="methods" thread-count="2" >
+    <test verbose="2" preserve-order="true"
+          name="Methods Running">
+        <classes>
+            <class name="techproed.tests.day21_xml_files_parallel_testing.C01_ParallelTest">
+                <methods>
+                    <include name="testParallel1"/>
+                    <include name="testParallel2"/>
+                    <include name="testParallel3"/>
+                    <include name="testParallel4"/>
+                    <include name="testParallel5"/>
+                    <include name="testParallel6"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
