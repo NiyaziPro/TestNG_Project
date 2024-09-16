@@ -23,7 +23,7 @@ public class C05_PageClassTest {
     //Login Testinin basarili oldugunu test edelim
     //sayfayı kapatalim
 
-    @Test
+    @Test(groups = "smoke")
     public void test01() {
 
         //https://opensource-demo.orangehrmlive.com/web/index.php/auth/login adrese gidelim

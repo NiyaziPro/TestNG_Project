@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TechProed Batch 001">
+    <test name="Group Test">
+       <groups>
+           <run>
+               <include name="smoke"></include>
+           </run>
+       </groups>
+        <packages>
+            <package name="techproed.tests.day17_annotations"></package>
+            <package name="techproed.tests.day18_pageobjectmodel"></package>
+
+        </packages>
+    </test>
+</suite>

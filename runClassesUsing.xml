@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Techproed Tests">
+    <test name="Run Test Classes">
+        <classes>
+            <class name="techproed.tests.day17_annotations.C01_Annotations"></class>
+            <class name="techproed.tests.day18_pageobjectmodel.C03_FirstDriverUsage"></class>
+            <class name="techproed.tests.smoke.C02_PositiveLoginTest"></class>
+        </classes>
+    </test>
+</suite>

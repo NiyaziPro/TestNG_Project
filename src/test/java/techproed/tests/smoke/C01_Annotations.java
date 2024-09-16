@@ -1,4 +1,4 @@
-package techproed.tests.day17_annotations;
+package techproed.tests.smoke;
 
 import org.testng.annotations.*;
 
@@ -44,7 +44,7 @@ public class C01_Annotations {
         System.out.println("Her test methodundan sonra @AfterMethod notasyonuna sahip method bir kez calisir.");
     }
 
-    @Test(groups = "smoke")
+    @Test
     public void test01() {
         System.out.println("Test01");
     }

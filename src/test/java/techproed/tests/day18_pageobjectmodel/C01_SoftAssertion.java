@@ -16,7 +16,7 @@ public class C01_SoftAssertion {
 
 
 
-    @Test
+    @Test(groups = "smoke")
     public void test01() {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(3,2);
