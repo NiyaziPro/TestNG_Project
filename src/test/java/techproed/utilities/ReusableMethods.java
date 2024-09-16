@@ -95,9 +95,9 @@ public class ReusableMethods {
 
     //Tüm Sayfa ScreenShot
     public static void screenShot(String name) {
-        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
+        String date = DateTimeFormatter.ofPattern("dd.MM.yyyy_HH.mm.ss").format(LocalDateTime.now());
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
-        String filePath = System.getProperty("user.dir") + "/src/test/java/techproed/testOutputs/screenshots/" + name + date + ".png";
+        String filePath = System.getProperty("user.dir") + "/src/test/java/techproed/testOutputs/screenshots/" + name + "_" + date + ".png";
         try {
             Files.write(Paths.get(filePath), ts.getScreenshotAs(OutputType.BYTES));
         } catch (IOException e) {
@@ -107,7 +107,7 @@ public class ReusableMethods {
 
     //WebElement ScreenShot
     public static void screenShotOfWebElement(WebElement webElement) {
-        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
+        String date = DateTimeFormatter.ofPattern("dd.MM.yyyy_HH.mm.ss").format(LocalDateTime.now());
         String filePath = System.getProperty("user.dir") + "/src/test/java/techproed/testOutputs/webElementScreenshots/" + date + ".png";
         try {
             Files.write(Paths.get(filePath), webElement.getScreenshotAs(OutputType.BYTES));
