@@ -5,6 +5,7 @@ import org.testng.SkipException;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+
 import java.util.NoSuchElementException;
 
 
@@ -15,8 +16,10 @@ public class C01_Listeners {
 
     @Test
     public void testListenersUsagePassed() {
+
         System.out.println("Passed");
         Assert.assertTrue(true);
+
 
     }
 
@@ -37,7 +40,7 @@ public class C01_Listeners {
     @Test
     public void testListenersUsageException() {
         System.out.println("Error");
-       throw new NoSuchElementException("NoSuchElementException");
+        throw new NoSuchElementException("NoSuchElementException");
 
     }
 
