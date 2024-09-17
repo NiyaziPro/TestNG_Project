@@ -3,10 +3,7 @@ package techproed.tests.day22_listeners;
 
 import org.testng.Assert;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import techproed.pages.DataProviderPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.DataProviderUtilities;
@@ -25,14 +22,13 @@ public class C03_HomeWorkTests {
     @BeforeMethod
     public void setUp() {
         dataProviderPage = new DataProviderPage();
-    }
-
-    @Test(dataProvider = "positiveTestData", dataProviderClass = DataProviderUtilities.class ,
-            description = "US01_TC001 - Kullanici gecerli data'lar ile giris yapabilmeli")
-    public void testAgeBoxVerifyPositive(String age) {
-
         ExtentReport.getExtentTest().info("Kullanici Data Provider sitesine gider");
         Driver.getDriver().get(ConfigReader.getProperties("dataProviderUrl"));
+    }
+
+    @Test(dataProvider = "positiveTestData", dataProviderClass = DataProviderUtilities.class,
+            description = "US01_TC001 - Kullanici gecerli data'lar ile giris yapabilmeli")
+    public void testAgeBoxVerifyPositive(String age) {
 
         dataProviderPage.ageBox.sendKeys(age);
         ExtentReport.getExtentTest().info("Kullanici 'Yas' kutusuna gecerli data girer");
@@ -44,17 +40,12 @@ public class C03_HomeWorkTests {
         Assert.assertEquals(dataProviderPage.resultText.getText(), "Yaş doğrulandı!");
         ExtentReport.getExtentTest().pass("Kullanici gecerli bilgiler ile giris yapti");
 
-        ExtentReport.getExtentTest().getStatus();
-        ExtentReport.getExtentTest().info("Sayfa kapatilir");
-        Driver.closeDriver();
+
     }
 
     @Test(dataProvider = "negativeTestData", dataProviderClass = DataProviderUtilities.class,
-            description = "US01_TC001 - Kullanici gecerli data'lar ile giris yapabilmeli")
+            description = "US01_TC002 - Kullanici gecersiz data'lar ile giris yapamamali")
     public void testAgeBoxVerifyNegative(String age) {
-
-        ExtentReport.getExtentTest().info("Kullanici Data Provider sitesine gider");
-        Driver.getDriver().get(ConfigReader.getProperties("dataProviderUrl"));
 
         dataProviderPage.ageBox.sendKeys(age);
         ExtentReport.getExtentTest().info("Kullanici 'Yas' kutusuna gecersiz data girer");
@@ -66,23 +57,29 @@ public class C03_HomeWorkTests {
         Assert.assertEquals(dataProviderPage.resultText.getText(), "Yaş 18 ile 100 arasında olmalıdır.");
         ExtentReport.getExtentTest().pass("Kullanici gecersiz bilgiler ile giris yapamadi");
 
-        Driver.closeDriver();
+
     }
 
-    @Test(dataProvider = "invalidTestData", dataProviderClass = DataProviderUtilities.class)
+    @Test(dataProvider = "invalidTestData", dataProviderClass = DataProviderUtilities.class, description = "US01_TC003 - Kullanici fake data'lar ile giris yapamamali")
     public void testAgeBoxVerifyInvalidData(String age) {
 
 
-        Driver.getDriver().get(ConfigReader.getProperties("dataProviderUrl"));
-
         dataProviderPage.ageBox.sendKeys(age);
+        ExtentReport.getExtentTest().info("Kullanici 'Yas' kutusuna gecersiz data girer");
+
         dataProviderPage.yasiDogrulaButton.click();
+        ExtentReport.getExtentTest().info("Kullanici 'Yasi Dogrula' buttonuna tiklar");
 
         Assert.assertEquals(dataProviderPage.resultText.getText(), "Geçersiz yaş!");
 
-        Driver.closeDriver();
+
     }
 
+    @AfterMethod
+    public void tearDown() {
+        ExtentReport.getExtentTest().info("Sayfa kapatilir");
+        Driver.closeDriver();
+    }
 
     @AfterClass
     public void afterClass() {
