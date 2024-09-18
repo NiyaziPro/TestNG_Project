@@ -29,7 +29,7 @@ public class ExtentReport {
     public static void createExtentReport(String testName, String testerName) {
 
         //Bu objeyi raporları oluşturmak ve başlatmak için kullanacağız
-        extentReports = new com.aventstack.extentreports.ExtentReports();
+        extentReports = new ExtentReports();
         String date = DateTimeFormatter.ofPattern("dd.MM.yyyy_HH.mm.ss").format(LocalDateTime.now());
         String path = "target\\extentReport\\htmlReport_" + date + ".html";
 
