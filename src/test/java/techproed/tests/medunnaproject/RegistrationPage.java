@@ -18,6 +18,12 @@ public class RegistrationPage {
     @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]")
     public WebElement ssnInvalidMessage;
 
+    @FindBy(xpath = "//div[text()='Your SSN is required.']")
+    public WebElement ssnRequiredTextMsg;
+
+    @FindBy(xpath = "//div[text()='Your SSN is invalid']")
+    public WebElement ssnInvalidTextMsg;
+
     @FindBy(id = "firstName")
     public WebElement firstNameBox;
 
@@ -27,18 +33,12 @@ public class RegistrationPage {
     @FindBy(id = "lastName")
     public WebElement lastNameBox;
 
-    @FindBy(xpath = "(//div[@class='invalid-feedback'])[3]")
-    public WebElement lastNameInvalidMessage;
 
-    @FindBy(xpath = "//*[.='Your SSN is required.']")
-    public WebElement ssnRequiredTextMsg;
+    @FindBy(xpath = "//div[text()='Your FirstName is required.']")
+    public WebElement firstNameRequiredTextMsg;
 
-    @FindBy(xpath = "//*[.='Your SSN is invalid']")
-    public WebElement ssnInvalidTextMsg;
-
-
-
-
+    @FindBy(xpath = "//div[text()='Your LastName is required.']")
+    public WebElement lastNameRequiredTextMsg;
 
 
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="techproed.utilities.ExtentReportsListener"></listener>
+    </listeners>
+    <test name="US001">
+        <classes>
+            <class name="techproed.tests.medunnaproject.RegistrationTest">
+                <methods>
+                    <include name="ssnTest01"/>
+                    <include name="ssnTest02"/>
+                    <include name="firstNameTest01"/>
+                    <include name="lastNameTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

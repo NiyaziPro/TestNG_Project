@@ -1,6 +1,7 @@
 package techproed.tests.medunnaproject;
 
 import org.openqa.selenium.Keys;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import techproed.utilities.*;
@@ -69,12 +70,12 @@ US001: Registration should be available using SSN, Firstname and Lastname
 
     }
 
-    @Test(description = "US001_AC001 - Kullanıcı ssn 22255-5432'yi girer, \"SSN'niz geçersiz\" mesajı olmalıdır")
-    public void ssnTest() {
+    @Test(description = "US001_AC001 - 3. ve 5. rakamlardan sonra \"-\" işaretine uyarak geçerli bir SSN olmalıdır, 9 rakam uzunluğunda olmalıdır")
+    public void ssnTest01() {
 
         //AC001-TC01: Kullanıcı ssn 22255-5432'yi girer, "SSN'niz geçersiz" mesajı olmalıdır
         registrationPage.ssnBox.sendKeys("22255-5432", Keys.TAB);
-        //ExtentReportUtils.addScreenShotToReport();
+        ExtentReportUtils.addScreenShotToReport();
         BrowserUtils.verifyElementDisplayed(registrationPage.ssnInvalidMessage);
 
         //AC001TC02: Kullanıcı 222-555432 numaralı SSN'yi girer, "SSN'niz geçersiz" mesajı olmalı
@@ -90,7 +91,7 @@ US001: Registration should be available using SSN, Firstname and Lastname
         //AC001TC04: Kullanıcı 222-55-543a ssn'sini girdiğinde "SSN'niz geçersiz" mesajı çıkmalıdır
         registrationPage.ssnBox.clear();
         registrationPage.ssnBox.sendKeys("222-55-543a",Keys.TAB);
-        //ExtentReportUtils.addScreenShotToReport();
+        ExtentReportUtils.addScreenShotToReport();
         BrowserUtils.verifyElementDisplayed(registrationPage.ssnInvalidMessage);
 
         //AC001TC05: Kullanıcı 222-55-5432 numaralı ssn'yi girer, herhangi bir hata mesajı olmamalıdır
@@ -98,43 +99,67 @@ US001: Registration should be available using SSN, Firstname and Lastname
         registrationPage.ssnBox.sendKeys("222-55-5432",Keys.TAB);
 
         BrowserUtils.verifyElementNotDisplayed(registrationPage.ssnRequiredTextMsg);
-
-
-
+        BrowserUtils.verifyElementNotDisplayed(registrationPage.ssnInvalidTextMsg);
 
     }
 
 
+    @Test(description = "US001 - AC002: SSN boş bırakılamaz")
+    public void ssnTest02() {
+        //AC002TC01: Kullanıcı ssn'yi boş bırakır, "SSN'niz gereklidir" mesajı olmalıdır.
+        registrationPage.ssnBox.sendKeys(Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.ssnRequiredTextMsg);
+
+        //AC002TC02: Kullanıcı yalnızca ssn alanına bosluk girer, "SSN'niz gereklidir" mesajı olmalıdır.
+        registrationPage.ssnBox.sendKeys(" ",Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.ssnRequiredTextMsg);
 
 
+        //AC002TC03: Kullanıcı 222-55-5432 numaralı ssn'yi girer, herhangi bir hata mesajı olmamalıdır
+        registrationPage.ssnBox.clear();
+        registrationPage.ssnBox.sendKeys("222-55-5432",Keys.TAB);
+
+        BrowserUtils.verifyElementNotDisplayed(registrationPage.ssnRequiredTextMsg);
+        BrowserUtils.verifyElementNotDisplayed(registrationPage.ssnInvalidTextMsg);
+
+    }
+
+    @Test(description = "US001_AC003: Herhangi bir karakter içeren ve boş olamayacak geçerli bir ad olmalıdır")
+    public void firstNameTest01() {
+    // AC003TC01: Kullanıcı İlk Adı boş bırakır, "İlk Adınız gereklidir." mesajı olmalıdır.
+        registrationPage.firstNameBox.sendKeys(Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.firstNameRequiredTextMsg);
+
+    // AC003TC02: Kullanıcı yalnızca İlkAd alanını girer, "İlkAdınız gereklidir." mesajı olmalıdır.
+        registrationPage.firstNameBox.sendKeys(" ",Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.firstNameRequiredTextMsg);
+
+    // AC003TC03: Kullanıcı herhangi bir karakter içeren bir ad girdiğinde, herhangi bir hata mesajı olmamalıdır
+        registrationPage.firstNameBox.clear();
+        registrationPage.firstNameBox.sendKeys("Ab12#",Keys.TAB);
+        BrowserUtils.verifyElementNotDisplayed(registrationPage.firstNameRequiredTextMsg);
 
 
+    }
 
+    @Test(description = "US001_AC004: Herhangi bir karakter içeren geçerli bir soyadı olmalıdır ve bu zorunlu bir alandır")
+    public void lastNameTest() {
+        // AC004TC01: Kullanıcı soyadını boş bırakır, "Soyadınız gereklidir." mesajı olmalıdır.
+        registrationPage.lastNameBox.sendKeys(Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.lastNameRequiredTextMsg);
 
+        // AC004TC02: Kullanıcı soyadını yalnızca boşluk bırakarak girer, "Soyadınız gereklidir." mesajı olmalıdır.
+        registrationPage.lastNameBox.sendKeys(" ",Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.lastNameRequiredTextMsg);
 
+        // AC004TC03: Kullanıcı herhangi bir karakter içeren soyadı girer, herhangi bir hata mesajı olmamalıdır
+        registrationPage.lastNameBox.clear();
+        registrationPage.lastNameBox.sendKeys("Ab12#",Keys.TAB);
+        BrowserUtils.verifyElementNotDisplayed(registrationPage.lastNameRequiredTextMsg);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @AfterMethod
+    public void tearDown() {
+        Driver.closeDriver();
+    }
 }
