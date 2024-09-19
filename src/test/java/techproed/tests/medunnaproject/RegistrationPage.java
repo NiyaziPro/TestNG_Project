@@ -11,12 +11,6 @@ public class RegistrationPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id = "account-menu")
-    public WebElement accountMenuDropDown;
-
-    @FindBy(xpath = "//*[.='Register']")
-    public WebElement registerButton;
-
 
     @FindBy(id = "ssn")
     public WebElement ssnBox;
@@ -35,6 +29,16 @@ public class RegistrationPage {
 
     @FindBy(xpath = "(//div[@class='invalid-feedback'])[3]")
     public WebElement lastNameInvalidMessage;
+
+    @FindBy(xpath = "//*[.='Your SSN is required.']")
+    public WebElement ssnRequiredTextMsg;
+
+    @FindBy(xpath = "//*[.='Your SSN is invalid']")
+    public WebElement ssnInvalidTextMsg;
+
+
+
+
 
 
 }

@@ -1,6 +1,9 @@
 package techproed.tests.medunnaproject;
 
+import org.openqa.selenium.Keys;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import techproed.utilities.*;
 
 public class RegistrationTest{
 
@@ -30,7 +33,7 @@ US001: Registration should be available using SSN, Firstname and Lastname
      US001: SSN, Ad ve Soyad kullanılarak kayıt yapılabilmelidir
 
      AC001: 3. ve 5. rakamlardan sonra "-" işaretine uyarak geçerli bir SSN olmalıdır, 9 rakam uzunluğunda olmalıdır
-         AC001TC01: Kullanıcı ssn 22255-5432'yi girer, "SSN'niz geçersiz" mesajı olmalıdır
+         AC001-TC01: Kullanıcı ssn 22255-5432'yi girer, "SSN'niz geçersiz" mesajı olmalıdır
          AC001TC02: Kullanıcı 222-555432 numaralı SSN'yi girer, "SSN'niz geçersiz" mesajı olmalı
          AC001TC03: Kullanıcı 222-55-543 numaralı SSN'yi girer, "SSN'niz geçersiz" mesajı olmalıdır
          AC001TC04: Kullanıcı 222-55-543a ssn'sini girdiğinde "SSN'niz geçersiz" mesajı çıkmalıdır
@@ -51,10 +54,87 @@ US001: Registration should be available using SSN, Firstname and Lastname
          AC004TC02: Kullanıcı soyadını yalnızca boşluk bırakarak girer, "Soyadınız gereklidir." mesajı olmalıdır.
          AC004TC03: Kullanıcı herhangi bir karakter içeren soyadı girer, herhangi bir hata mesajı olmamalıdır
   */
+    HomePage homePage = new HomePage();
+    RegistrationPage registrationPage = new RegistrationPage();
 
-
-    @Test(description = "US001_TC001 - Kullanıcı ssn 22255-5432'yi girer, \"SSN'niz geçersiz\" mesajı olmalıdır")
-    public void test01() {
+    @BeforeMethod
+    public void setUp() {
+        Driver.getDriver().get(ConfigReader.getProperties("medunnaUrl"));
+        ExtentReportUtils.extentTestInfo("Kullanici belirtilen siteye (https://www.medunna.com/) gider");
+        ExtentReportUtils.extentTestInfo("Kullanici Ana sayfaya gider"); // User is on Medunna Home Page
+        homePage.accountMenuDropDown.click();
+        ExtentReportUtils.extentTestPass("Kullanici insan sembolune tiklar");
+        homePage.registerButton.click();
+        ExtentReportUtils.extentTestPass("Kullanici Register butonuna tiklar");
 
     }
+
+    @Test(description = "US001_AC001 - Kullanıcı ssn 22255-5432'yi girer, \"SSN'niz geçersiz\" mesajı olmalıdır")
+    public void ssnTest() {
+
+        //AC001-TC01: Kullanıcı ssn 22255-5432'yi girer, "SSN'niz geçersiz" mesajı olmalıdır
+        registrationPage.ssnBox.sendKeys("22255-5432", Keys.TAB);
+        //ExtentReportUtils.addScreenShotToReport();
+        BrowserUtils.verifyElementDisplayed(registrationPage.ssnInvalidMessage);
+
+        //AC001TC02: Kullanıcı 222-555432 numaralı SSN'yi girer, "SSN'niz geçersiz" mesajı olmalı
+        registrationPage.ssnBox.clear();
+        registrationPage.ssnBox.sendKeys("222-555432",Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.ssnInvalidMessage);
+
+        //AC001TC03: Kullanıcı 222-55-543 numaralı SSN'yi girer, "SSN'niz geçersiz" mesajı olmalıdır
+        registrationPage.ssnBox.clear();
+        registrationPage.ssnBox.sendKeys("222-55-543",Keys.TAB);
+        BrowserUtils.verifyElementDisplayed(registrationPage.ssnInvalidMessage);
+
+        //AC001TC04: Kullanıcı 222-55-543a ssn'sini girdiğinde "SSN'niz geçersiz" mesajı çıkmalıdır
+        registrationPage.ssnBox.clear();
+        registrationPage.ssnBox.sendKeys("222-55-543a",Keys.TAB);
+        //ExtentReportUtils.addScreenShotToReport();
+        BrowserUtils.verifyElementDisplayed(registrationPage.ssnInvalidMessage);
+
+        //AC001TC05: Kullanıcı 222-55-5432 numaralı ssn'yi girer, herhangi bir hata mesajı olmamalıdır
+        registrationPage.ssnBox.clear();
+        registrationPage.ssnBox.sendKeys("222-55-5432",Keys.TAB);
+
+        BrowserUtils.verifyElementNotDisplayed(registrationPage.ssnRequiredTextMsg);
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
