@@ -27,15 +27,13 @@ public class RegistrationPage {
     @FindBy(id = "firstName")
     public WebElement firstNameBox;
 
-    @FindBy(xpath = "(//div[@class='invalid-feedback'])[2]")
-    public WebElement firstNameInvalidMessage;
+    @FindBy(xpath = "//div[text()='Your FirstName is required.']")
+    public WebElement firstNameRequiredTextMsg;
+
 
     @FindBy(id = "lastName")
     public WebElement lastNameBox;
 
-
-    @FindBy(xpath = "//div[text()='Your FirstName is required.']")
-    public WebElement firstNameRequiredTextMsg;
 
     @FindBy(xpath = "//div[text()='Your LastName is required.']")
     public WebElement lastNameRequiredTextMsg;
