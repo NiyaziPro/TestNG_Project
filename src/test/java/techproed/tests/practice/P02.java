@@ -28,11 +28,11 @@ public class P02 {
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         WebElement searchBox = (WebElement) js.executeScript("return document.querySelector(\"body > book-app\").shadowRoot.querySelector(\"#input\")");
-        searchBox.sendKeys("selenium", Keys.ENTER);
+        searchBox.sendKeys("Selenium", Keys.ENTER);
 
         WaitUtils.waitFor(3);
 
-        Assert.assertTrue(Driver.getDriver().getTitle().contains("selenium"));
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("Selenium"));
         Driver.closeDriver();
     }
 }
