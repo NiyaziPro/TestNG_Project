@@ -1,0 +1,17 @@
+package techproed.allovercommerce.pages;
+
+import techproed.utilities.Driver;
+import org.openqa.selenium.support.PageFactory;
+
+public class P09_CartPage {
+    public P09_CartPage() {
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
+
+
+
+
+
+
+
+}
