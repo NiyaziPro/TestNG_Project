@@ -40,7 +40,7 @@ public class ExtentReportUtils {
             extentReports.attachReporter(extentHtmlReporter);
 
             // HTML raporun belge başlığını ayarlar
-            extentHtmlReporter.config().setDocumentTitle("Batch 231");
+            extentHtmlReporter.config().setDocumentTitle("TeamQA DE");
 
             // Raporda gösterilecek olan genel başlığı ayarlar
             extentHtmlReporter.config().setReportName(reportName);
@@ -48,7 +48,7 @@ public class ExtentReportUtils {
             // Bu HTML raporunda görmek isteyebileceğimiz diğer bilgileri aşağıdaki şekilde ekleyebiliriz
             extentReports.setSystemInfo("Environment", "QA");
             extentReports.setSystemInfo("Browser", "Chrome");
-            extentReports.setSystemInfo("Test Automation Engineer", "Ali Can");
+            extentReports.setSystemInfo("Test Automation Engineer", "Niyazi");
         }
     }
 

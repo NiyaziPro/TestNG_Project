@@ -11,10 +11,10 @@ public class P01_HomePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "//span[text()='Sign In']")
+    @FindBy(partialLinkText = "Sign In")
     public WebElement signIn;
 
-    @FindBy(xpath = "//span[text()='Register']")
+    @FindBy(partialLinkText = "Register")
     public WebElement register;
 
     @FindBy(className = "w-icon-heart")
@@ -23,13 +23,16 @@ public class P01_HomePage {
     @FindBy(className = "cart-label")
     public  WebElement cart;
 
-//    @FindBy(xpath = "(//input[@type='search'])[1]")
-//    public WebElement searchbox;
-
-    @FindBy(name = "s")
+    @FindBy(xpath = "(//input[@type='search'])[1]")
     public WebElement searchbox;
+
+//    @FindBy(name = "s")
+//    public WebElement searchbox;
 
     @FindBy(xpath = "//button[@aria-label='Search Button']")
     public WebElement searchboxButton;
+
+    @FindBy(partialLinkText = "Sign Out")
+    public WebElement signOutButton;
 
 }

@@ -36,4 +36,11 @@ public class Test01 {
 
 
     }
+
+    @Test
+    public void testName() {
+        MainPages mainPages = new MainPages();
+        Driver.getDriver().get("https://www.allovercommerce.com/");
+        mainPages.homePage.signIn.click();
+    }
 }
