@@ -1,9 +1,11 @@
 package techproed.allovercommerce.tests;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 import techproed.allovercommerce.pages.MainPages;
 import techproed.utilities.Driver;
+import techproed.utilities.JSUtils;
 import techproed.utilities.WaitUtils;
 
 import java.util.Locale;
@@ -41,6 +43,12 @@ public class Test01 {
     public void testName() {
         MainPages mainPages = new MainPages();
         Driver.getDriver().get("https://www.allovercommerce.com/");
-        mainPages.homePage.signIn.click();
+        mainPages.homePage.searchbox.sendKeys("iphone", Keys.ENTER);
+        mainPages.productPage.selectedProduct(1).click();
+        mainPages.productPage.addToCartButton.click();
+        mainPages.homePage.cart.click();
+        WaitUtils.waitForClickablility(mainPages.cartPage.viewCartButton, 10);
+        JSUtils.JSclickWithTimeout(mainPages.cartPage.viewCartButton);
+
     }
 }

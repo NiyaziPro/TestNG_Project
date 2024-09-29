@@ -18,6 +18,7 @@ public class TC001 extends PreConditionLogged {
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
         mainPages.homePage.searchboxButton.click();
 
+        ExtentReportUtils.extentTestInfo("Search box tan istediği bir ürünü arayabildigini dogrular.");
         Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
         ExtentReportUtils.extentTestPass("Kullanıcının search box tan istediği bir ürünü arayabildigi doğrulandı.");
 

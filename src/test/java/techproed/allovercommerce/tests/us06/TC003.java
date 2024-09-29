@@ -16,6 +16,7 @@ public class TC003 extends PreConditionLogged {
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
         mainPages.homePage.searchboxButton.click();
 
+        ExtentReportUtils.extentTestInfo("Ürünün bulunamadıgına dagir mesaj gördügünü dogrular.");
         Assert.assertTrue(mainPages.productPage.noProductWereFoundMsg.isDisplayed());
         ExtentReportUtils.extentTestPass("Kullanıcının search box'tan sitede olmayan(alakasız) " +
                 "bir ürünü arattığında ürünün bulunamadıgı mesajı görüldügü doğrulandı.");

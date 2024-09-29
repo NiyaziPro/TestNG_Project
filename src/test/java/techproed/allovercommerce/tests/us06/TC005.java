@@ -16,6 +16,7 @@ public class TC005  extends PreConditionAccessTheWebsite{
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
         mainPages.homePage.searchboxButton.click();
 
+        ExtentReportUtils.extentTestInfo("Arama yapamadığını dogrular.");
         Assert.assertEquals(Driver.getDriver().getTitle(),beginTitle);
         ExtentReportUtils.extentTestPass("Kullanıcının search'box kutusunu boş bırakarak arama yapamadığı doğrulandı.");
     }

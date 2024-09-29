@@ -15,8 +15,11 @@ public class PreConditionAccessTheWebsite {
     @BeforeClass
     public void beforeClass() {
 
+        ExtentReportUtils.createExtentTest("Pre-condition", "Kullanıcı Web sitesine erişebilmeli.");
+        ExtentReportUtils.setUpExtentReport("TestNG_Project");
         ExtentReportUtils.extentTestInfo("Kullanıcı web sitesine gider.");
         Driver.getDriver().get(ConfigReader.getProperties("allovercommerceUrl"));
+        ExtentReportUtils.extentTestPass("Kullanıcı başariyla Web sitesine erişti.");
 
     }
 

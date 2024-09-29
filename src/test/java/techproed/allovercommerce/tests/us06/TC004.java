@@ -17,6 +17,7 @@ public class TC004 extends PreConditionAccessTheWebsite {
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
         mainPages.homePage.searchboxButton.click();
 
+        ExtentReportUtils.extentTestInfo("Search box tan istediği bir ürünü arayabildigini dogrular.");
         Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
         ExtentReportUtils.extentTestPass("Kullanıcının Sign In olmadan searchbox'tan istediği bir ürün arayabildigi doğrulandı.");
 

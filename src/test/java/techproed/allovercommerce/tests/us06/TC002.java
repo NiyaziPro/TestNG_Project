@@ -17,6 +17,7 @@ public class TC002 extends PreConditionLogged {
         ExtentReportUtils.extentTestInfo("Enter tusuna tıklar.");
         mainPages.homePage.searchboxButton.sendKeys(Keys.ENTER);
 
+        ExtentReportUtils.extentTestInfo("Search box tan istediği bir ürünü arayabildigini dogrular.");
         Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
         ExtentReportUtils.extentTestPass("Kullanıcının search box tan istediği bir ürünü arayabildigi doğrulandı.");
 

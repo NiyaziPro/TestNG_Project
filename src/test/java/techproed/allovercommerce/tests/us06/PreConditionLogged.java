@@ -14,6 +14,8 @@ public class PreConditionLogged {
     @BeforeClass
     public void beforeClass() {
 
+        ExtentReportUtils.createExtentTest("Pre-condition", "Kullanıcı sisteme giriş yapmış olmalıdır.");
+        ExtentReportUtils.setUpExtentReport("TestNG_Project");
         ExtentReportUtils.extentTestInfo("Kullanıcı web sitesine gider.");
         Driver.getDriver().get(ConfigReader.getProperties("allovercommerceUrl"));
 
