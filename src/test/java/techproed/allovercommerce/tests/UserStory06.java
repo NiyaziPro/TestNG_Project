@@ -12,15 +12,19 @@ public class UserStory06 {
     MainPages mainPages = new MainPages();
 
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
+
         ExtentReportUtils.setUpExtentReport("TestNG_Project");
         ExtentReportUtils.createExtentTest("Pre-condition", "Kullanıcı sisteme giriş yapmış olmalıdır.");
 
 
         ExtentReportUtils.extentTestInfo("Kullanıcı web sitesine gider.");
+        System.out.println("Test başlatılıyor...");
+        WaitUtils.waitFor(5);
         Driver.getDriver().get(ConfigReader.getProperties("allovercommerceUrl"));
 
+        WaitUtils.waitFor(4);
         ExtentReportUtils.extentTestInfo("\"Sign In\"  butonuna tıklar.");
         mainPages.homePage.signIn.click();
 
@@ -51,6 +55,7 @@ public class UserStory06 {
 
         Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
         ExtentReportUtils.extentTestPass("Search box tan istediği bir ürünü arayabildigini dogrular.");
+
 
 
     }
@@ -87,8 +92,10 @@ public class UserStory06 {
 
 
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
+        System.out.println("Test tamamlandı, driver kapatılıyor...");
+        WaitUtils.waitFor(5);
                Driver.closeDriver();
 
     }

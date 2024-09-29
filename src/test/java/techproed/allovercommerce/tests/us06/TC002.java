@@ -2,13 +2,10 @@ package techproed.allovercommerce.tests.us06;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import techproed.allovercommerce.pages.MainPages;
-import techproed.utilities.Driver;
 import techproed.utilities.ExtentReportUtils;
 
-public class TC002 extends PreCondition{
+public class TC002 extends PreConditionLogged {
 
     @Test(description = "TC002 - Kullanıcı search'box tan istediği bir ürünü arayabilmeli.")
     public void testSearchProductFromSearchBoxWithClickEnter() {
@@ -21,15 +18,9 @@ public class TC002 extends PreCondition{
         mainPages.homePage.searchboxButton.sendKeys(Keys.ENTER);
 
         Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
-        ExtentReportUtils.extentTestPass("Search box tan istediği bir ürünü arayabildigini dogrular.");
+        ExtentReportUtils.extentTestPass("Kullanıcının search box tan istediği bir ürünü arayabildigi doğrulandı.");
 
 
-    }
-
-    @AfterClass
-    public void afterClass() {
-        ExtentReportUtils.extentTestInfo("Sayfa kapatıldı.");
-        Driver.closeDriver();
     }
 
 

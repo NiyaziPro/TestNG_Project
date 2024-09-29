@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" >
+<suite name="All Test Suite" parallel="classes" thread-count="3">
     <listeners>
         <listener class-name="techproed.utilities.ExtentReportsListener"></listener>
     </listeners>
-    <test verbose="2" preserve-order="true"
-          name="Test for Now">
-        <packages>
-            <package name="techproed.allovercommerce.tests.us06"></package>
-        </packages>
+    <test name="Test for Now">
+        <classes>
+            <class name="techproed.allovercommerce.tests.us06.TC001"></class>
+            <class name="techproed.allovercommerce.tests.us06.TC002"></class>
+            <class name="techproed.allovercommerce.tests.us06.TC003"></class>
+        </classes>
     </test>
 </suite>

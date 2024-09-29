@@ -1,14 +1,11 @@
 package techproed.allovercommerce.tests.us06;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import techproed.utilities.Driver;
 import techproed.utilities.ExtentReportUtils;
 
-public class TC001 extends PreCondition{
+public class TC001 extends PreConditionLogged {
 
     @Test(description = "TC001 - Kullanıcı search'box tan istediği bir ürünü arayabilmeli")
     public void testSearchProductFromSearchBox() {
@@ -22,7 +19,7 @@ public class TC001 extends PreCondition{
         mainPages.homePage.searchboxButton.click();
 
         Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
-        ExtentReportUtils.extentTestPass("Search box tan istediği bir ürünü arayabildigini dogrular.");
+        ExtentReportUtils.extentTestPass("Kullanıcının search box tan istediği bir ürünü arayabildigi doğrulandı.");
 
 
 

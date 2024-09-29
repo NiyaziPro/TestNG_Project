@@ -1,7 +1,5 @@
 package techproed.allovercommerce.tests.us06;
 
-import org.openqa.selenium.NoSuchSessionException;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import techproed.allovercommerce.pages.MainPages;
 import techproed.utilities.ConfigReader;
@@ -9,13 +7,13 @@ import techproed.utilities.Driver;
 import techproed.utilities.ExtentReportUtils;
 import techproed.utilities.WaitUtils;
 
-public class PreCondition {
+@Listeners(techproed.utilities.ExtentReportsListener.class)
+public class PreConditionLogged {
     MainPages mainPages = new MainPages();
-    @BeforeClass
-    public void dummy() {
 
-        ExtentReportUtils.createExtentTest("Pre-condition", "Kullanıcı sisteme giriş yapmış olmalıdır.");
-        ExtentReportUtils.setUpExtentReport("TestNG_Project");
+    @BeforeClass
+    public void beforeClass() {
+
         ExtentReportUtils.extentTestInfo("Kullanıcı web sitesine gider.");
         Driver.getDriver().get(ConfigReader.getProperties("allovercommerceUrl"));
 
@@ -36,13 +34,8 @@ public class PreCondition {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void afterClass(){
         Driver.closeDriver();
-        ExtentReportUtils.extentTestInfo("Sayfa kapatıldı.");
     }
-
-
-
-
 
 }
