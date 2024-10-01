@@ -14,8 +14,9 @@ public class P08_ProductPage {
     }
 
 
-    @FindBy(xpath = "//div[@class='product-archive']/ul/li")
+    @FindBy(xpath = "//div[@class='product-archive']/ul/li//h3")
     public List<WebElement> productsList;
+
     @FindBy(xpath = "//button[text()='Add to cart']")
     public WebElement addToCartButton;
 
@@ -32,7 +33,6 @@ public class P08_ProductPage {
         try {
             return addToCartButton.isDisplayed();
         } catch (NoSuchElementException e) {
-            // Eğer buton bulunamazsa, görünür değildir
             return false;
 
         }

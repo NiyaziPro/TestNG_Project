@@ -16,14 +16,38 @@ public class P09_CartPage {
     @FindBy(xpath = "//a[text()='View cart']")
     public WebElement viewCartButton;
 
-//    @FindBy(xpath = "//tbody[1]/tr")
-//    public List<WebElement> cartProductsList;
+    @FindBy(xpath = "//a[text()='Checkout']")
+    public WebElement checkoutButton;
 
     @FindBy(xpath = "//*[@class='widget_shopping_cart_content']/ul")
     public List<WebElement> cartProductsList;
 
     @FindBy(className = "cart-count")
     public WebElement cartCount;
+
+    @FindBy(xpath = "(//table/tbody)[1]/tr")
+    public List<WebElement> productsList;
+
+    public boolean doesListContainText( String textToFind) {
+        for (WebElement w : productsList) {
+            if (w.getText().contains(textToFind)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @FindBy(xpath = "//input[@type='number']")
+    public WebElement quantityNumber;
+
+    @FindBy(xpath = "//button[@title='Plus']")
+    public WebElement quantityPlusButton;
+
+    @FindBy(xpath = "//button[@title='Minus']")
+    public WebElement quantityMinusButton;
+
+    @FindBy(name = "update_cart")
+    public WebElement updateCartButton;
 
 
 }

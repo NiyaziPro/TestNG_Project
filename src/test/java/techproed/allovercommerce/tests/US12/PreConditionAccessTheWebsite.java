@@ -1,4 +1,4 @@
-package techproed.allovercommerce.tests.us06;
+package techproed.allovercommerce.tests.US12;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -10,7 +10,7 @@ import techproed.utilities.ExtentReportUtils;
 
 @Listeners(techproed.utilities.ExtentReportsListener.class)
 public class PreConditionAccessTheWebsite {
-    MainPages mainPages = new MainPages();
+    MainPages mainPage = new MainPages();
 
     @BeforeClass
     public void beforeClass() {

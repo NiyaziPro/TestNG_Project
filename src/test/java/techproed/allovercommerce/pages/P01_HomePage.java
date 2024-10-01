@@ -26,8 +26,6 @@ public class P01_HomePage {
     @FindBy(xpath = "(//input[@type='search'])[1]")
     public WebElement searchbox;
 
-//    @FindBy(name = "s")
-//    public WebElement searchbox;
 
     @FindBy(xpath = "//button[@aria-label='Search Button']")
     public WebElement searchboxButton;

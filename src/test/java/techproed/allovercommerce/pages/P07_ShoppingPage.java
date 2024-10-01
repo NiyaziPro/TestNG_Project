@@ -32,6 +32,4 @@ public class P07_ShoppingPage {
     public WebElement hasBeenAddedToCartMsg;
 
 
-    @FindBy(xpath = "(//div/ul)[1]")
-    public WebElement shoppingCart;
 }

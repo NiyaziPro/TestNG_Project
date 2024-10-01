@@ -1,4 +1,4 @@
-package techproed.allovercommerce.tests.us06;
+package techproed.allovercommerce.tests.US06;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

@@ -1,5 +1,6 @@
-package techproed.allovercommerce.tests.us06;
+package techproed.allovercommerce.tests.US06;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.utilities.ExtentReportUtils;
@@ -17,9 +18,12 @@ public class TC010 extends PreConditionLogged{
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
         mainPages.homePage.searchboxButton.click();
         ExtentReportUtils.extentTestInfo("Cikan ürünlerden istedigine tıklar.");
-        mainPages.productPage.selectedProduct(0).click();
+        WebElement selectedProduct = mainPages.productPage.selectedProduct(0);
+        String productText = selectedProduct.getText();
+        selectedProduct.click();
+
         ExtentReportUtils.extentTestInfo("Urün detay sayfasında 'ADD TO CART' butonuna tıklar.");
-        mainPages.productPage.addToCartButton.click();
+        JSUtils.JSclickWithTimeout(mainPages.productPage.addToCartButton);
         ExtentReportUtils.extentTestInfo("Cart' ikonuna tıklar.");
         mainPages.homePage.cart.click();
 
@@ -28,6 +32,7 @@ public class TC010 extends PreConditionLogged{
 
         WaitUtils.waitForPageToLoad(10);
         ExtentReportUtils.extentTestInfo("Ürünü sepette görebildiğini doğrular.");
+        Assert.assertTrue(mainPages.cartPage.doesListContainText(productText));
         Assert.assertFalse(mainPages.cartPage.cartProductsList.isEmpty());
         ExtentReportUtils.extentTestPass("Kullanıcının aradığı ürünü sepette görebildiği doğrulandı.");
     }

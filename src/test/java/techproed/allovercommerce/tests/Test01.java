@@ -8,14 +8,14 @@ import techproed.utilities.Driver;
 import techproed.utilities.JSUtils;
 import techproed.utilities.WaitUtils;
 
-import java.util.Locale;
+
 
 public class Test01 {
 
     @Test
     public void test01() {
         MainPages mainPages = new MainPages();
-        Faker faker = new Faker(Locale.of("tr", "tr"));
+        Faker faker = new Faker();
 
         Driver.getDriver().get("https://www.allovercommerce.com/");
         mainPages.homePage.register.click();
@@ -51,4 +51,6 @@ public class Test01 {
         JSUtils.JSclickWithTimeout(mainPages.cartPage.viewCartButton);
 
     }
+
+
 }

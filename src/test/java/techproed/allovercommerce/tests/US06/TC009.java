@@ -1,4 +1,4 @@
-package techproed.allovercommerce.tests.us06;
+package techproed.allovercommerce.tests.US06;
 
 
 import org.testng.Assert;

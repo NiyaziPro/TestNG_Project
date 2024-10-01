@@ -7,7 +7,7 @@
     <test verbose="2" preserve-order="true"
           name="TestNG_Allover">
         <packages>
-            <package name="techproed.allovercommerce.tests.us06"></package>
+            <package name="techproed.allovercommerce.tests.US06"></package>
         </packages>
     </test>
 </suite>

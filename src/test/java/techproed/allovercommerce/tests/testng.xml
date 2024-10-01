@@ -6,9 +6,9 @@
     </listeners>
     <test name="Test for Now">
         <classes>
-            <class name="techproed.allovercommerce.tests.us06.TC001"></class>
-            <class name="techproed.allovercommerce.tests.us06.TC002"></class>
-            <class name="techproed.allovercommerce.tests.us06.TC003"></class>
+            <class name="techproed.allovercommerce.tests.US06.TC001"></class>
+            <class name="techproed.allovercommerce.tests.US06.TC002"></class>
+            <class name="techproed.allovercommerce.tests.US06.TC003"></class>
         </classes>
     </test>
 </suite>
