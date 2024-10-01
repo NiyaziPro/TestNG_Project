@@ -12,6 +12,9 @@ public class P04_MyAccountPage {
     @FindBy(partialLinkText = "Addresses")
     public WebElement adressesLink;
 
+    @FindBy(linkText = "Store Manager")
+    public WebElement storeManagerLink;
+
 
 
 

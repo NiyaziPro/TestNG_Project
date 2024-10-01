@@ -5,10 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.utilities.ExtentReportUtils;
 
-public class TC001 extends PreCondVendorLogged {
+public class TC005 extends PreCondVendorLogged {
 
-    @Test(description = "TC001 - Vendor olarak Coupons oluşturmada Code yazabilmeli")
-    public void testToWriteCodeToCreateCouponsAsAVendor() {
+    @Test(description = "TC005 - Vendor olarak Coupons oluşturmada Coupon Amount yazılabilmeli")
+    public void testToWriteCouponAmountToCreateCouponsAsAVendor() {
 
         ExtentReportUtils.extentTestInfo(" Kullanıcı \"Sign out\"  butonuna tıklar.");
         mainPage.homePage.signOutButton.click();
@@ -18,11 +18,11 @@ public class TC001 extends PreCondVendorLogged {
         mainPage.vendorStoreManagerPage.couponsLink.click();
         ExtentReportUtils.extentTestInfo("\"Add New\" butonuna tıklar.");
         mainPage.vendorCouponsPage.addNewButton.click();
-        ExtentReportUtils.extentTestInfo("\"Code\" kutusuna bir data girer.");
-        mainPage.vendorCouponsPage.codeBox.sendKeys("Welcome20", Keys.TAB);
-        ExtentReportUtils.extentTestInfo("\"Code\" kutusuna bir kod yazabildigini doğrular.");
+        ExtentReportUtils.extentTestInfo("\"Coupon Amount\" kutusuna indirim miktarını girer.");
+        mainPage.vendorCouponsPage.codeBox.sendKeys("20", Keys.TAB);
+        ExtentReportUtils.extentTestInfo("\"Coupon Amount\" kutusuna indirim miktarı yazabildigini doğrular");
 
-        Assert.assertEquals(mainPage.vendorCouponsPage.codeBox.getAttribute("value"),"Welcome20");
-        ExtentReportUtils.extentTestPass("Kullanıcının Vendor olarak Coupons oluşturmada Code yazabildigi doğrulandı.");
+        Assert.assertEquals(mainPage.vendorCouponsPage.codeBox.getAttribute("value"),"20");
+        ExtentReportUtils.extentTestPass("Kullanıcının Vendor olarak Coupons oluşturmada Coupon Amount yazılabildigi doğrulandı.");
     }
 }
