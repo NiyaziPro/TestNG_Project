@@ -1,8 +1,6 @@
 package techproed.allovercommerce.pages;
 
-import java.security.PKCS12Attribute;
-
-public class MainPages {
+public class MainPage {
     public P01_HomePage homePage = new P01_HomePage();
     public P02_RegisterPage registerPage = new P02_RegisterPage();
     public P03_LoginPage loginPage = new P03_LoginPage();

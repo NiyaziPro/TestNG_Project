@@ -15,6 +15,9 @@ public class P04_MyAccountPage {
     @FindBy(linkText = "Store Manager")
     public WebElement storeManagerLink;
 
+    @FindBy(linkText = "Orders")
+    public WebElement ordersLink;
+
 
 
 

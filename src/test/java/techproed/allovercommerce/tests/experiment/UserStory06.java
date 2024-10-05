@@ -1,15 +1,15 @@
-package techproed.allovercommerce.tests;
+package techproed.allovercommerce.tests.experiment;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.annotations.Listeners;
-import techproed.allovercommerce.pages.MainPages;
+import techproed.allovercommerce.pages.MainPage;
 import techproed.utilities.*;
 @Listeners(techproed.utilities.ExtentReportsListener.class)
 public class UserStory06 {
 
-    MainPages mainPages = new MainPages();
+    MainPage mainPage = new MainPage();
 
 
     @BeforeMethod(alwaysRun = true)
@@ -26,16 +26,16 @@ public class UserStory06 {
 
         WaitUtils.waitFor(4);
         ExtentReportUtils.extentTestInfo("\"Sign In\"  butonuna tıklar.");
-        mainPages.homePage.signIn.click();
+        mainPage.homePage.signIn.click();
 
         ExtentReportUtils.extentTestInfo("\"Username\"  kutusuna gecerli bir veri girer.");
-        mainPages.loginPage.usernameBox.sendKeys(ConfigReader.getProperties("alloverUsername"));
+        mainPage.loginPage.usernameBox.sendKeys(ConfigReader.getProperties("alloverUsername"));
 
         ExtentReportUtils.extentTestInfo("\"Password\"  kutusuna gecerli bir veri girer.");
-        mainPages.loginPage.passwordBox.sendKeys(ConfigReader.getProperties("alloverPassword"));
+        mainPage.loginPage.passwordBox.sendKeys(ConfigReader.getProperties("alloverPassword"));
 
         ExtentReportUtils.extentTestInfo("\"Sign In\"  butonuna tıklar.");
-        mainPages.loginPage.signInButton.click();
+        mainPage.loginPage.signInButton.click();
         ExtentReportUtils.extentTestPass("Kullanıcı başarıyla giriş yaptı.");
 
         WaitUtils.waitFor(4);
@@ -47,13 +47,13 @@ public class UserStory06 {
 
 
         ExtentReportUtils.extentTestInfo("Search box'a  tıklar.");
-        mainPages.homePage.searchbox.click();
+        mainPage.homePage.searchbox.click();
         ExtentReportUtils.extentTestInfo("Istediği bir ürün ismi girer.");
-        mainPages.homePage.searchbox.sendKeys("Macbook");
+        mainPage.homePage.searchbox.sendKeys("Macbook");
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
-        mainPages.homePage.searchboxButton.click();
+        mainPage.homePage.searchboxButton.click();
 
-        Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
+        Assert.assertTrue(mainPage.productPage.searchResultsFor.isDisplayed());
         ExtentReportUtils.extentTestPass("Search box tan istediği bir ürünü arayabildigini dogrular.");
 
 
@@ -64,13 +64,13 @@ public class UserStory06 {
     public void testSearchProductFromSearchBoxWithClickEnter() {
 
         ExtentReportUtils.extentTestInfo("Search box'a  tıklar.");
-        mainPages.homePage.searchbox.click();
+        mainPage.homePage.searchbox.click();
         ExtentReportUtils.extentTestInfo("Istediği bir ürün ismi girer.");
-        mainPages.homePage.searchbox.sendKeys("Macbook");
+        mainPage.homePage.searchbox.sendKeys("Macbook");
         ExtentReportUtils.extentTestInfo("Enter tusuna tıklar.");
-        mainPages.homePage.searchboxButton.sendKeys(Keys.ENTER);
+        mainPage.homePage.searchboxButton.sendKeys(Keys.ENTER);
 
-        Assert.assertTrue(mainPages.productPage.searchResultsFor.isDisplayed());
+        Assert.assertTrue(mainPage.productPage.searchResultsFor.isDisplayed());
         ExtentReportUtils.extentTestPass("Search box tan istediği bir ürünü arayabildigini dogrular.");
 
     }
@@ -79,13 +79,13 @@ public class UserStory06 {
     public void testSearchIrrelevantProductFromSearchBox() {
 
         ExtentReportUtils.extentTestInfo("Search box'a  tıklar.");
-        mainPages.homePage.searchbox.click();
+        mainPage.homePage.searchbox.click();
         ExtentReportUtils.extentTestInfo("Sitede olmayan (alakasız) bir ürün ismi girer.");
-        mainPages.homePage.searchbox.sendKeys("Selenium");
+        mainPage.homePage.searchbox.sendKeys("Selenium");
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
-        mainPages.homePage.searchboxButton.click();
+        mainPage.homePage.searchboxButton.click();
 
-        Assert.assertTrue(mainPages.productPage.noProductWereFoundMsg.isDisplayed());
+        Assert.assertTrue(mainPage.productPage.noProductWereFoundMsg.isDisplayed());
         ExtentReportUtils.extentTestPass("Ürünün bulunamadıgına dagir mesaj gördügünü  dogrular.");
 
     }

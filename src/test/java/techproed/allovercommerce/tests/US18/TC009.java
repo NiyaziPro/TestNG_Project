@@ -25,7 +25,7 @@ public class TC009 extends PreCondVendorLogged {
 
         WaitUtils.waitFor(5);
 
-        Assert.assertEquals(mainPage.vendorCouponsPage.expiryDatetBox.getAttribute("value"),"2024-10-30");//!!!!!!!!!!
+        Assert.assertEquals(mainPage.vendorCouponsPage.expiryDatetBox.getAttribute("value"),"2024-10-30");
 
 
         ExtentReportUtils.extentTestPass("Kullanıcının Vendor olarak Coupons oluşturmada Coupon expiry date girilebildigi doğrulandı.");

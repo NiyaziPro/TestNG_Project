@@ -3,18 +3,18 @@ package techproed.allovercommerce.tests.US18;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
-import techproed.allovercommerce.pages.MainPages;
+import techproed.allovercommerce.pages.MainPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ExtentReportUtils;
 import techproed.utilities.WaitUtils;
 
 @Listeners(techproed.utilities.ExtentReportsListener.class)
-public class PreCondVendorLogged {
-    MainPages mainPage = new MainPages();
+ class PreCondVendorLogged {
+    MainPage mainPage = new MainPage();
 
     @BeforeClass
-    public void beforeClass() {
+     void beforeClass() {
 
         ExtentReportUtils.createExtentTest("Pre-condition", "Kullanıcı Vendor olarak sisteme giriş yapmış olmalıdır.");
         ExtentReportUtils.setUpExtentReport("TestNG_Project");
@@ -38,7 +38,7 @@ public class PreCondVendorLogged {
     }
 
     @AfterClass
-    public void afterClass(){
+     void afterClass(){
         Driver.closeDriver();
     }
 

@@ -3,6 +3,10 @@ package techproed.utilities;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ActionsUtils {
     private static Actions actions = new Actions(Driver.getDriver());
@@ -102,5 +106,54 @@ public class ActionsUtils {
      */
     public static void pressTab() {
         actions.sendKeys(Keys.TAB).build().perform();
+    }
+
+    public static void hoverOverAndWait(WebElement element, int timeoutInSeconds) {
+        try {
+            // Actions sınıfı ile elementin üzerine git (hover)
+            Actions actions = new Actions(Driver.getDriver());
+            actions.moveToElement(element).perform();
+
+            // Elementin tıklanabilir olmasını bekle
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds( timeoutInSeconds));
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Exception e) {
+            throw new RuntimeException("Element is not interactable or hover failed within the timeout: "
+                    + timeoutInSeconds + " seconds", e);
+        }
+    }
+
+    /**
+     * Belirtilen elemente kaydırma yapar.
+     * @param element Kaydırma yapılacak WebElement.
+     */
+    public static void scrollToElementUsingActions(WebElement element) {
+        try {
+            // Actions sınıfını kullanarak elemente kadar kaydır
+            Actions actions = new Actions(Driver.getDriver());
+            actions.moveToElement(element).perform();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to scroll to element: " + element, e);
+        }
+    }
+
+
+    /**
+     * Belirtilen WebElement'in görünür olmasını bekler ve görünür hale geldiğinde tıklar.
+     * @param element Tıklanacak WebElement.
+     * @param timeoutInSeconds Bekleme süresi (saniye).
+     */
+    public static void waitForElementToBeVisibleAndClick(WebElement element, int timeoutInSeconds) {
+        try {
+            // Elementin görünür olmasını bekle
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds( timeoutInSeconds));
+            wait.until(ExpectedConditions.visibilityOf(element));
+
+            // Element görünür olduğunda, Actions ile tıkla
+            Actions actions = new Actions(Driver.getDriver());
+            actions.moveToElement(element).click().perform();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to click on the element after waiting for visibility: " + element, e);
+        }
     }
 }

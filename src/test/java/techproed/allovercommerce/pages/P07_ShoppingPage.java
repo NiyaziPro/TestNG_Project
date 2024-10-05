@@ -31,5 +31,17 @@ public class P07_ShoppingPage {
     @FindBy(xpath = "//*[text()='has been added to cart']")
     public WebElement hasBeenAddedToCartMsg;
 
+    @FindBy(xpath = "//div[@class='product-archive']/ul/li//h3")
+    public List<WebElement> productsList;
+
+    public WebElement selectedProduct(int productIndex) {
+        if (productIndex >= productsList.size()) {
+            return productsList.get(productsList.size() - 1);
+        } else {
+            return productsList.get(productIndex);
+        }
+
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package techproed.allovercommerce.tests.US12;
+package techproed.allovercommerce.tests.US20;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -10,11 +10,11 @@ import techproed.utilities.ExtentReportUtils;
 import techproed.utilities.WaitUtils;
 
 @Listeners(techproed.utilities.ExtentReportsListener.class)
-public class PreConditionVendorLogged {
+class PC_VendorLogged {
     MainPage mainPage = new MainPage();
 
     @BeforeClass
-    public void beforeClass() {
+     void beforeClass() {
 
         ExtentReportUtils.createExtentTest("Pre-condition", "Kullanıcı Vendor olarak sisteme giriş yapmış olmalıdır.");
         ExtentReportUtils.setUpExtentReport("TestNG_Project");
@@ -25,10 +25,10 @@ public class PreConditionVendorLogged {
         mainPage.homePage.signIn.click();
 
         ExtentReportUtils.extentTestInfo("\"Username\"  kutusuna gecerli bir veri girer.");
-        mainPage.loginPage.usernameBox.sendKeys(ConfigReader.getProperties("vendorTestUsername"));
+        mainPage.loginPage.usernameBox.sendKeys(ConfigReader.getProperties("vendorUsername"));
 
         ExtentReportUtils.extentTestInfo("\"Password\"  kutusuna gecerli bir veri girer.");
-        mainPage.loginPage.passwordBox.sendKeys(ConfigReader.getProperties("vendorTestPassword"));
+        mainPage.loginPage.passwordBox.sendKeys(ConfigReader.getProperties("vendorPassword"));
 
         ExtentReportUtils.extentTestInfo("\"Sign In\"  butonuna tıklar.");
         mainPage.loginPage.signInButton.click();
@@ -38,7 +38,7 @@ public class PreConditionVendorLogged {
     }
 
     @AfterClass
-    public void afterClass(){
+     void afterClass(){
         Driver.closeDriver();
     }
 

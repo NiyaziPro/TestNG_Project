@@ -14,20 +14,9 @@ public class P08_ProductPage {
     }
 
 
-    @FindBy(xpath = "//div[@class='product-archive']/ul/li//h3")
-    public List<WebElement> productsList;
-
     @FindBy(xpath = "//button[text()='Add to cart']")
     public WebElement addToCartButton;
 
-    public WebElement selectedProduct(int productIndex) {
-        if (productIndex >= productsList.size()) {
-            return productsList.get(productsList.size() - 1);
-        } else {
-            return productsList.get(productIndex);
-        }
-
-    }
 
     public boolean isAddToCartButtonVisible() {
         try {

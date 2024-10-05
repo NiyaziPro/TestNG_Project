@@ -69,5 +69,25 @@ public class P10_CheckOutPage {
     @FindBy(id = "place_order")
     public WebElement placeOrderButton;
 
+    @FindBy(className = "product-name")
+    public List<WebElement> productList;
+
+    @FindBy(xpath = "//tr[@class='order-total']//bdi")
+    public WebElement orderTotal;
+
+    @FindBy(className = "showcoupon")
+    public WebElement enterYourCouponCode;
+
+    @FindBy(id = "coupon_code")
+    public WebElement inputCouponCode;
+
+    @FindBy(name = "apply_coupon")
+    public WebElement applyCouponButton;
+
+    @FindBy(className = "woocommerce-error")
+    public WebElement alertCouponMsg;
+
+
+
 
 }

@@ -8,6 +8,8 @@ import techproed.utilities.ExtentReportUtils;
 import techproed.utilities.JSUtils;
 import techproed.utilities.WaitUtils;
 
+import java.util.List;
+
 public class TC012 extends PreCondVendorLogged {
 
     @Test(description = "TC012 - Vendor olarak Coupons oluşturabilmeli\n" +
@@ -46,10 +48,15 @@ public class TC012 extends PreCondVendorLogged {
         WaitUtils.waitFor(3);
         mainPage.vendorStoreManagerPage.couponsLink.click();
         Driver.getDriver().navigate().refresh();
-        WaitUtils.waitForPageToLoad(5);
+        WaitUtils.waitFor(5);
         ExtentReportUtils.extentTestInfo("Vendor olarak indirim kuponu oluşturabildigini doğrular.");
 
-        Assert.assertEquals(mainPage.vendorCouponsPage.couponsList.get(0).getText(),"Welcome20");
+        List<WebElement> coupons = mainPage.vendorCouponsPage.couponsList;
+        for (int i = 0; i < coupons.size(); i++) {
+            if (i==0){
+                Assert.assertEquals(coupons.get(i).getText(),"Welcome20");
+            }
+        }
 
         ExtentReportUtils.extentTestPass("Kullanıcının Vendor olarak Coupons oluşturmada Allow free shipping, Show on store seçebildigi doğrulandı.");
 

@@ -2,39 +2,44 @@ package techproed.allovercommerce.tests.US06;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import techproed.allovercommerce.pages.MainPage;
+import techproed.utilities.ActionsUtils;
 import techproed.utilities.ExtentReportUtils;
 import techproed.utilities.JSUtils;
 import techproed.utilities.WaitUtils;
 
 public class TC014 extends PreConditionLogged {
 
-    @Test(description = "Kullanıcı sepete eklediği ürünlerin miktarına pozitif sayı girebilmeli.")
+    @Test(description = "TC014 - Kullanıcı sepete eklediği ürünlerin miktarına pozitif sayı girebilmeli.")
     public void testEnterAPositiveNumberForTheQuantity() {
+        MainPage mainPage = new MainPage();
         ExtentReportUtils.extentTestInfo("Search box'a  tıklar.");
-        mainPages.homePage.searchbox.click();
+        mainPage.homePage.searchbox.click();
         ExtentReportUtils.extentTestInfo("Istediği bir ürün ismi girer.");
-        mainPages.homePage.searchbox.sendKeys("book");
+        mainPage.homePage.searchbox.sendKeys("book");
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
-        mainPages.homePage.searchboxButton.click();
+        mainPage.homePage.searchboxButton.click();
         ExtentReportUtils.extentTestInfo("Cikan ürünlerden istedigine tıklar.");
-        mainPages.productPage.selectedProduct(0).click();
+        mainPage.shoppingPage.selectedProduct(0).click();
 
         ExtentReportUtils.extentTestInfo("Urün detay sayfasında 'ADD TO CART' butonuna tıklar.");
-        mainPages.productPage.addToCartButton.click();
+        JSUtils.JSclickWithTimeout(mainPage.productPage.addToCartButton);
         ExtentReportUtils.extentTestInfo("Cart' ikonuna tıklar.");
-        mainPages.homePage.cart.click();
+        mainPage.homePage.cart.click();
 
         ExtentReportUtils.extentTestInfo("Açılan sekmede 'View Cart' butonuna tıklar.");
-        JSUtils.JSclickWithTimeout(mainPages.cartPage.viewCartButton);
+        JSUtils.JSclickWithTimeout(mainPage.cartPage.viewCartButton);
 
-        WaitUtils.waitForPageToLoad(10);
+        ActionsUtils.scrollToElementUsingActions(mainPage.cartPage.updateCartButton);
         ExtentReportUtils.extentTestInfo("\"Quantity\" kısmında istedigi miktarı girer.");
-        mainPages.cartPage.quantityNumber.clear();
-        mainPages.cartPage.quantityNumber.sendKeys("10");
+        mainPage.cartPage.quantityNumber().clear();
+        mainPage.cartPage.quantityNumber().sendKeys("10");
 
         ExtentReportUtils.extentTestInfo("\"Update Cart\" butonuna tıklar.");
-        WaitUtils.waitForClickablility(mainPages.cartPage.updateCartButton, 5).click();
-        int quantity = Integer.parseInt(mainPages.cartPage.quantityNumber.getAttribute("value"));
+        mainPage.cartPage.updateCartButton.click();
+        WaitUtils.waitFor(3);
+
+        int quantity = Integer.parseInt(mainPage.cartPage.quantityNumber().getAttribute("value"));
 
         ExtentReportUtils.extentTestInfo("Ürünün miktarının arttığını doğrular.");
         Assert.assertEquals(quantity, 10);

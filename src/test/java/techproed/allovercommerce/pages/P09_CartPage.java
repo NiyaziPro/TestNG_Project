@@ -1,5 +1,6 @@
 package techproed.allovercommerce.pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import techproed.utilities.Driver;
@@ -28,7 +29,7 @@ public class P09_CartPage {
     @FindBy(xpath = "(//table/tbody)[1]/tr")
     public List<WebElement> productsList;
 
-    public boolean doesListContainText( String textToFind) {
+    public boolean doesListContainText(String textToFind) {
         for (WebElement w : productsList) {
             if (w.getText().contains(textToFind)) {
                 return true;
@@ -38,13 +39,38 @@ public class P09_CartPage {
     }
 
     @FindBy(xpath = "//input[@type='number']")
-    public WebElement quantityNumber;
+    public List<WebElement> quantityNumberList;
+
+    public WebElement quantityNumber() {
+        if (quantityNumberList != null && !quantityNumberList.isEmpty()) {
+            return quantityNumberList.get(quantityNumberList.size() - 1);
+        } else {
+            return null;
+        }
+    }
+
 
     @FindBy(xpath = "//button[@title='Plus']")
-    public WebElement quantityPlusButton;
+    public List<WebElement> quantityPlusButtonList;
+
+    public WebElement quantityPlusButton() {
+        if (quantityPlusButtonList != null && !quantityPlusButtonList.isEmpty()) {
+            return quantityPlusButtonList.get(quantityPlusButtonList.size() - 1);
+        } else {
+            throw new NoSuchElementException("quantityPlusButtonList is either null or empty.");
+        }
+    }
 
     @FindBy(xpath = "//button[@title='Minus']")
-    public WebElement quantityMinusButton;
+    public List<WebElement> quantityMinusButtonList;
+
+    public WebElement quantityMinusButton() {
+        if (quantityMinusButtonList != null && !quantityMinusButtonList.isEmpty()) {
+            return quantityMinusButtonList.get(quantityMinusButtonList.size() - 1);
+        } else {
+            throw new NoSuchElementException("quantityPlusButtonList is either null or empty.");
+        }
+    }
 
     @FindBy(name = "update_cart")
     public WebElement updateCartButton;

@@ -3,6 +3,7 @@ package techproed.allovercommerce.tests.US06;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import techproed.allovercommerce.pages.MainPage;
 import techproed.utilities.ActionsUtils;
 import techproed.utilities.ExtentReportUtils;
 import techproed.utilities.JSUtils;
@@ -10,45 +11,44 @@ import techproed.utilities.WaitUtils;
 
 public class TC018 extends PreConditionAccessTheWebsite{
 
-    @Test(description = "Kullanıcı Sign In olmadan sepete eklediği ürünlerin miktarını azaltabilmeli")
+    @Test(description = "TC018 - Kullanıcı Sign In olmadan sepete eklediği ürünlerin miktarını azaltabilmeli")
     public void testReduceTheAmountOfProductsToTheCartWithoutSignIn() {
 
+        MainPage mainPage = new MainPage();
         ExtentReportUtils.extentTestInfo("Search box'a  tıklar.");
-        mainPages.homePage.searchbox.click();
+        mainPage.homePage.searchbox.click();
         ExtentReportUtils.extentTestInfo("Istediği bir ürün ismi girer.");
-        mainPages.homePage.searchbox.sendKeys("bag");
+        mainPage.homePage.searchbox.sendKeys("bag");
         ExtentReportUtils.extentTestInfo("Search \uD83D\uDD0D ikonuna tıklar.");
-        mainPages.homePage.searchboxButton.click();
+        mainPage.homePage.searchboxButton.click();
         ExtentReportUtils.extentTestInfo("Aradığı ürünün üzerine gider.");
-        WebElement selectedProduct = mainPages.productPage.selectedProduct(0);
-
-        ActionsUtils.hoverOver(selectedProduct);
+        WebElement selectedProduct = mainPage.shoppingPage.selectedProduct(0);
+        ActionsUtils.hoverOverAndWait(selectedProduct,5);
         ExtentReportUtils.extentTestInfo("Bag \uD83D\uDC5Cikonu görülünceye kadar bekler ve görülünce ona tiklar.");
-        WaitUtils.waitForClickablility(mainPages.shoppingPage.bagIcon(), 5).click();
+        WaitUtils.waitForClickablility(mainPage.shoppingPage.bagIcon(), 5).click();
         ExtentReportUtils.extentTestInfo("Cart' ikonuna tıklar.");
-        mainPages.homePage.cart.click();
+        mainPage.homePage.cart.click();
 
         ExtentReportUtils.extentTestInfo("Açılan sekmede 'View Cart' butonuna tıklar.");
-        JSUtils.JSclickWithTimeout(mainPages.cartPage.viewCartButton);
+        JSUtils.JSclickWithTimeout(mainPage.cartPage.viewCartButton);
 
-
-        WaitUtils.waitForPageToLoad(10);
+        ActionsUtils.scrollToElementUsingActions(mainPage.cartPage.updateCartButton);
 
         ExtentReportUtils.extentTestInfo("\"Quantity\" kısmında plus(+) butonuna tıklar.");
-        mainPages.cartPage.quantityPlusButton.click();
+        mainPage.cartPage.quantityPlusButton().click();
 
         ExtentReportUtils.extentTestInfo("\"Update Cart\" butonuna tıklar.");
-        WaitUtils.waitForClickablility(mainPages.cartPage.updateCartButton, 5).click();
-
-        WaitUtils.waitFor(5);
-        int quantity = Integer.parseInt(mainPages.cartPage.quantityNumber.getAttribute("value"));
-
-        ExtentReportUtils.extentTestInfo("\"Quantity\" kısmında minus(-) butonuna tıklar.");
-        mainPages.cartPage.quantityMinusButton.click();
+        mainPage.cartPage.updateCartButton.click();
 
         WaitUtils.waitFor(3);
+        int quantity = Integer.parseInt(mainPage.cartPage.quantityNumber().getAttribute("value"));
+
+        ExtentReportUtils.extentTestInfo("\"Quantity\" kısmında minus(-) butonuna tıklar.");
+        mainPage.cartPage.quantityMinusButton().click();
+
+        WaitUtils.waitFor(2);
         ExtentReportUtils.extentTestInfo("Ürünün miktarının azaldıgını dogrular.");
-        int updateQuantity = Integer.parseInt(mainPages.cartPage.quantityNumber.getAttribute("value"));
+        int updateQuantity = Integer.parseInt(mainPage.cartPage.quantityNumber().getAttribute("value"));
 
         Assert.assertEquals(updateQuantity, quantity - 1);
         ExtentReportUtils.extentTestPass("Kullanıcının sepete eklediği ürünlerin miktarını azaltabildiği doğrulandı.");

@@ -26,7 +26,7 @@ public class TC008 extends PreCondVendorLogged {
 
         WaitUtils.waitFor(5);
 
-        Assert.assertEquals(mainPage.vendorCouponsPage.couponAmountBox.getAttribute("value"),"0");//!!!!!!!!!!
+        Assert.assertEquals(mainPage.vendorCouponsPage.couponAmountBox.getAttribute("value"),"0");
 
 
         ExtentReportUtils.extentTestPass("Kullanıcının Vendor olarak Coupons oluşturmada Coupon Amount negatif sayı giremedigi doğrulandı.");

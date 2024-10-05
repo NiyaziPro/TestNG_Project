@@ -43,6 +43,8 @@ public class P20_VendorCouponsPage {
     @FindBy(xpath = "//*[@class='wcfm_dashboard_item_title']")
     public List<WebElement> couponsList;
 
+    @FindBy(css = ".wcicon-status-cancelled")
+    public WebElement cancelledMessage;
 
 
 }
